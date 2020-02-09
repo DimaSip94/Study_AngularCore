@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" />
+}
+
+<test-app>Загрузка...</test-app>
+
+@section scripts{
+    <script asp-src-include="/dist/polyfills.js"></script>
+    <script asp-src-include="/dist/apptest.js"></script>
+}

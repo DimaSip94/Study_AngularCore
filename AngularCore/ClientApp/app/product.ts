@@ -3,6 +3,6 @@
         public ProductID?: number,
         public Name?: string,
         public Description?: string,
-        public Price?: number,
+        public Price?: number
     ) { }
 }
