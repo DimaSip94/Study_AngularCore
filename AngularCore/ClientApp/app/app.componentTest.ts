@@ -7,7 +7,6 @@ import { ItemTest } from './ItemTest';
 export class AppComponentTest {
     text: string;
     price: number = 0;
-     
     items: ItemTest[] = 
     [
         { purchase: "Хлеб", done: false, price: 15.9 },
