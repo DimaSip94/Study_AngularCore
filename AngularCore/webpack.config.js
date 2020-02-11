@@ -5,7 +5,8 @@ module.exports = {
     entry: {
         'polyfills': './ClientApp/polyfills.ts',
         'app': './ClientApp/main.ts',
-        'apptest': './ClientApp/mainTest.ts'
+        'apptest': './ClientApp/mainTest.ts',
+        'newproduct':'./ClientApp/mainNewProduct.ts'
     },
     output: {
         path: path.resolve(__dirname, './wwwroot/dist'),     // путь к каталогу выходных файлов - папка public

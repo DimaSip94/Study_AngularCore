@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Component } from '@angular/core';
 import { DataService } from './data.service';
+import { LogService } from './app.logservice';
 import { Product } from './product';
 var AppComponent = /** @class */ (function () {
     function AppComponent(dataService) {
@@ -52,7 +53,7 @@ var AppComponent = /** @class */ (function () {
         Component({
             selector: 'app',
             templateUrl: './app.component.html',
-            providers: [DataService]
+            providers: [DataService, LogService]
         }),
         __metadata("design:paramtypes", [DataService])
     ], AppComponent);

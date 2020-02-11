@@ -9,23 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { LogService } from './app.logservice';
 var DataService = /** @class */ (function () {
-    function DataService(http) {
+    function DataService(http, log) {
         this.http = http;
+        this.log = log;
         this.url = "/api/products";
     }
     DataService.prototype.getProducts = function () {
+        this.log.write("getProducts");
         return this.http.get(this.url);
     };
     DataService.prototype.updateCreateProduct = function (product) {
+        this.log.write("updateCreateProduct");
         return this.http.post(this.url, product);
     };
     DataService.prototype.deleteProduct = function (id) {
+        this.log.write("deleteProduct");
         return this.http.delete(this.url + '/' + id);
     };
     DataService = __decorate([
         Injectable(),
-        __metadata("design:paramtypes", [HttpClient])
+        __metadata("design:paramtypes", [HttpClient, LogService])
     ], DataService);
     return DataService;
 }());

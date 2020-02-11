@@ -19,6 +19,11 @@ namespace AngularCore.Controllers
             return View();
         }
 
+        public IActionResult NewProduct()
+        {
+            return View();
+        }
+
         public IActionResult Test()
         {
             return View();
