@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 import { Product } from './product';
 var NewProductComponent = /** @class */ (function () {
     function NewProductComponent() {
+        this.product = new Product(0, "", "", 0);
         this.items = [];
     }
     NewProductComponent.prototype.addItem = function () {

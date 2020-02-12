@@ -1,16 +1,17 @@
 ﻿import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Product } from './product';
 @Component({
     selector: 'new-product',
     templateUrl: './app.newProductComponent.html'
 })
 export class NewProductComponent {
-
-    product: Product = new Product(0,"","",0);
-
     items: Product[] = [];
-
-    addItem() {
-        this.items.push(new Product(0, this.product.Name, this.product.Description, this.product.Price));
+    addItem(form: NgForm) {
+        if (form.value.price < 0) {
+            form.controls['price'].setErrors({ 'incorrect': true });
+            return;
+        }
+        this.items.push(new Product(0, form.value.name, form.value.description, form.value.price));
     }
 }
