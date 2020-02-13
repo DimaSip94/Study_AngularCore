@@ -26,11 +26,6 @@
     </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Update="ClientApp\app\product.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Update="ClientApp\polyfills.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
