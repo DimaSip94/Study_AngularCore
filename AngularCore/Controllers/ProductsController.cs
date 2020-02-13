@@ -24,12 +24,12 @@ namespace AngularCore.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ProductViewModel> Get()
+        public JsonResult Get()
         {
             int total = 0;
             List<Product> products = eFProductManager.GetProducts(out total);
             List<ProductViewModel> result = mapper.Map<List<Product>, List<ProductViewModel>>(products);
-            return result;
+            return Json(new { items = result });
         }
 
         [HttpGet("{id}")]

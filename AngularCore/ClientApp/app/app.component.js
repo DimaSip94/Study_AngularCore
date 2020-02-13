@@ -8,14 +8,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-import { DataService } from './data.service';
-import { LogService } from './app.logservice';
-import { Product } from './product';
+import { ProductService } from './products/data.productService';
 var AppComponent = /** @class */ (function () {
     function AppComponent(dataService) {
         this.dataService = dataService;
-        this.product = new Product(); // изменяемый товар
-        this.tableMode = true; // табличный режим
+        this.products = []; // массив товаров
     }
     AppComponent.prototype.ngOnInit = function () {
         this.loadProducts(); // загрузка данных при старте компонента  
@@ -24,38 +21,15 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.loadProducts = function () {
         var _this = this;
         this.dataService.getProducts()
-            .subscribe(function (data) { return _this.products = data; });
-    };
-    // сохранение данных
-    AppComponent.prototype.save = function () {
-        var _this = this;
-        this.dataService.updateCreateProduct(this.product)
-            .subscribe(function (data) { return _this.loadProducts(); });
-        this.cancel();
-    };
-    AppComponent.prototype.editProduct = function (p) {
-        this.product = p;
-    };
-    AppComponent.prototype.cancel = function () {
-        this.product = new Product();
-        this.tableMode = true;
-    };
-    AppComponent.prototype.delete = function (p) {
-        var _this = this;
-        this.dataService.deleteProduct(p.ProductID)
-            .subscribe(function (data) { return _this.loadProducts(); });
-    };
-    AppComponent.prototype.add = function () {
-        this.cancel();
-        this.tableMode = false;
+            .subscribe(function (data) { return _this.products = data["items"]; });
     };
     AppComponent = __decorate([
         Component({
             selector: 'app',
             templateUrl: './app.component.html',
-            providers: [DataService, LogService]
+            providers: [ProductService]
         }),
-        __metadata("design:paramtypes", [DataService])
+        __metadata("design:paramtypes", [ProductService])
     ], AppComponent);
     return AppComponent;
 }());

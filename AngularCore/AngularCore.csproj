@@ -7,12 +7,12 @@
   <ItemGroup>
     <None Remove="ClientApp\app\app.component.ts" />
     <None Remove="ClientApp\app\app.module.ts" />
-    <None Remove="ClientApp\app\data.service.ts" />
     <None Remove="ClientApp\app\main.ts" />
     <None Remove="ClientApp\app\polyfills.ts" />
     <None Remove="ClientApp\app\product.ts" />
     <None Remove="ClientApp\app\products\app.newProductComponent.ts" />
     <None Remove="ClientApp\app\products\app.newProductModule.ts" />
+    <None Remove="ClientApp\app\products\data.productService.ts" />
     <None Remove="ClientApp\app\products\product.ts" />
     <None Remove="ClientApp\mainNewProduct.ts" />
   </ItemGroup>
@@ -29,10 +29,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\app.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\app.module.ts" />
-    <TypeScriptCompile Include="ClientApp\app\data.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\product.ts" />
     <TypeScriptCompile Include="ClientApp\app\products\app.newProductComponent.ts" />
     <TypeScriptCompile Include="ClientApp\app\products\app.newProductModule.ts" />
+    <TypeScriptCompile Include="ClientApp\app\products\data.productService.ts" />
     <TypeScriptCompile Include="ClientApp\app\products\product.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
