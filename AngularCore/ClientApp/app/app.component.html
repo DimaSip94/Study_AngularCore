@@ -1,5 +1,5 @@
 ﻿<h1>Список товаров</h1>
-<input type="button" value="Добавить" class="btn btn-default"/>
+<a href="/Home/NewProduct" class="btn btn-default">Создать продукт</a>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -18,9 +18,11 @@
                 {{p.description}}
             </td>
             <td>
-                {{p.price}}
+                {{p.price | currency:'RUB':'symbol-narrow'}}
             </td>
-            <td></td>
+            <td>
+                <button class="btn btn-default" (click)="deleteProducts(p.productID)">Удалить</button>
+            </td>
         </tr>
     </tbody>
 </table>

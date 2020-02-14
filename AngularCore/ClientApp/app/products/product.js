@@ -1,9 +1,9 @@
 var Product = /** @class */ (function () {
-    function Product(ProductID, Name, Description, Price) {
-        this.ProductID = ProductID;
-        this.Name = Name;
-        this.Description = Description;
-        this.Price = Price;
+    function Product(productID, name, description, price) {
+        this.productID = productID;
+        this.name = name;
+        this.description = description;
+        this.price = price;
     }
     return Product;
 }());

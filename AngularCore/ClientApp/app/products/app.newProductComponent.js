@@ -14,20 +14,33 @@ var NewProductComponent = /** @class */ (function () {
     function NewProductComponent(productServ) {
         this.productServ = productServ;
         this.items = [];
+        this.isErrorSave = false;
+        this.saveErrorMessage = "";
     }
     NewProductComponent.prototype.addItem = function (form) {
+        var _this = this;
         if (form.value.price < 0) {
             form.controls['price'].setErrors({ 'incorrect': true });
             return;
         }
         var prod = new Product(0, form.value.name, form.value.description, form.value.price);
-        this.items.push(prod);
-        this.productServ.updateCreateProduct(prod);
+        this.productServ.updateCreateProduct(prod).subscribe(function (data) { return _this.checkAdd(data); });
+    };
+    NewProductComponent.prototype.checkAdd = function (data) {
+        this.isErrorSave = false;
+        if (data.result) {
+            location.href = "/home/index";
+        }
+        else {
+            this.isErrorSave = true;
+            this.saveErrorMessage = data.errorMsg;
+        }
     };
     NewProductComponent = __decorate([
         Component({
             selector: 'new-product',
             templateUrl: './app.newProductComponent.html',
+            styles: [".hide{display:none}"],
             providers: [ProductService]
         }),
         __metadata("design:paramtypes", [ProductService])

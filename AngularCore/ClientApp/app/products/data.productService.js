@@ -9,13 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 var ProductService = /** @class */ (function () {
     function ProductService(http) {
         this.http = http;
         this.url = "/api/products";
     }
     ProductService.prototype.getProducts = function () {
-        return this.http.get(this.url);
+        return this.http.get(this.url).pipe(map(function (data) {
+            var productList = data["items"];
+            return productList.map(function (product) {
+                return { productID: product.productID, name: product.name, description: product.description, price: product.price };
+            });
+        }));
     };
     ProductService.prototype.updateCreateProduct = function (product) {
         return this.http.post(this.url, product);

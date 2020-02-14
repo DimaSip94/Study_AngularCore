@@ -21,7 +21,11 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.loadProducts = function () {
         var _this = this;
         this.dataService.getProducts()
-            .subscribe(function (data) { return _this.products = data["items"]; });
+            .subscribe(function (data) { return _this.products = data; });
+    };
+    AppComponent.prototype.deleteProducts = function (id) {
+        var _this = this;
+        this.dataService.deleteProduct(id).subscribe(function (data) { return _this.loadProducts(); });
     };
     AppComponent = __decorate([
         Component({

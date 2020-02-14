@@ -9,19 +9,19 @@ namespace AngularCore.Models.ViewModels
 {
     public class ProductViewModel
     {
-        public int ProductID { get; set; }
+        public int productID { get; set; }
         [Required(ErrorMessage = "Please enter а product name")]
-        public string Name { get; set; }
+        public string name { get; set; }
         [Required(ErrorMessage = "Please enter а product description")]
-        public string Description { get; set; }
+        public string description { get; set; }
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "Please enter а product price")]
-        public decimal Price { get; set; }
+        public decimal price { get; set; }
         [Required(ErrorMessage = "Please enter а product category")]
-        public string Category { get; set; }
-        public int CartLineID { get; set; }
-        public int LogoID { get; set; }
-        public IFormFile LogoFile { get; set; }
-        public string LogoPath { get; set; }
+        public string category { get; set; }
+        public int cartLineID { get; set; }
+        public int logoID { get; set; }
+        public IFormFile logoFile { get; set; }
+        public string logoPath { get; set; }
     }
 }

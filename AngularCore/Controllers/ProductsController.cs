@@ -42,19 +42,23 @@ namespace AngularCore.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]ProductViewModel product)
         {
-            if (ModelState.IsValid)
-            {
-                eFProductManager.SaveProduct(mapper.Map<ProductViewModel, Product>(product));
-                return Ok(product);
-            }
-            return BadRequest(ModelState);
+            bool result = true;
+            string errorMsg = "";
+            var created = eFProductManager.SaveProduct(mapper.Map<ProductViewModel, Product>(product));
+            result = created.IsSuccess;
+            errorMsg = created.ErrorMessage;
+            return Json(new { result, errorMsg });
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            eFProductManager.DeleteProduct(id);
-            return Ok(id);
+            bool result = true;
+            string errorMsg = "";
+            var created = eFProductManager.DeleteProduct(id);
+            result = created.IsSuccess;
+            errorMsg = created.ErrorMessage;
+            return Json(new { result, errorMsg });
         }
     }
 }

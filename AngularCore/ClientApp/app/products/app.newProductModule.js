@@ -8,12 +8,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NewProductComponent } from './app.newProductComponent';
+import { HttpClientModule } from '@angular/common/http';
 var NewProductModule = /** @class */ (function () {
     function NewProductModule() {
     }
     NewProductModule = __decorate([
         NgModule({
-            imports: [BrowserModule, FormsModule],
+            imports: [BrowserModule, FormsModule, HttpClientModule],
             declarations: [NewProductComponent],
             bootstrap: [NewProductComponent]
         })

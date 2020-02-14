@@ -20,25 +20,7 @@ export class AppComponent implements OnInit {
         this.dataService.getProducts()
             .subscribe(data => this.products = data);
     }
-    //// сохранение данных
-    //save() {
-    //    this.dataService.updateCreateProduct(this.product)
-    //        .subscribe(data => this.loadProducts());
-    //    this.cancel();
-    //}
-    //editProduct(p: Product) {
-    //    this.product = p;
-    //}
-    //cancel() {
-    //    this.product = new Product();
-    //    this.tableMode = true;
-    //}
-    //delete(p: Product) {
-    //    this.dataService.deleteProduct(p.ProductID)
-    //        .subscribe(data => this.loadProducts());
-    //}
-    //add() {
-    //    this.cancel();
-    //    this.tableMode = false;
-    //}
+    deleteProducts(id: number) {
+        this.dataService.deleteProduct(id).subscribe(data => this.loadProducts());
+    }
 }
