@@ -33,10 +33,10 @@ namespace AngularCore.Controllers
         }
 
         [HttpGet("{id}")]
-        public ProductViewModel Get(int id)
+        public IActionResult Get(int id)
         {
             ProductViewModel product = mapper.Map<Product, ProductViewModel>(eFProductManager.GetProduct(id));
-            return product;
+            return Json(new { product = product });
         }
 
         [HttpPost]

@@ -19,7 +19,7 @@ namespace AngularCore.Controllers
             return View();
         }
 
-        public IActionResult NewProduct()
+        public IActionResult NewProduct(int id=0)
         {
             return View();
         }

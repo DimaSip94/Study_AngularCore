@@ -21,7 +21,10 @@
                 {{p.price | currency:'RUB':'symbol-narrow'}}
             </td>
             <td>
-                <button class="btn btn-default" (click)="deleteProducts(p.productID)">Удалить</button>
+                <button class="btn btn-danger" (click)="deleteProducts(p.productID)">Удалить</button>
+            </td>
+            <td>
+                <a href="/Home/NewProduct?id={{p.productID}}" class="btn btn-default">Редактировать</a>
             </td>
         </tr>
     </tbody>

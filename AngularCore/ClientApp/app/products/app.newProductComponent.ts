@@ -1,5 +1,5 @@
-﻿import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+﻿import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { Product } from './product';
 import { ProductService } from './data.productService'
 @Component({
@@ -8,17 +8,30 @@ import { ProductService } from './data.productService'
     styles: [`.hide{display:none}`],
     providers: [ProductService]
 })
-export class NewProductComponent {
+export class NewProductComponent implements OnInit{
+    product: Product = new Product(0,"","",0);
     constructor(private productServ: ProductService) { }
-    items: Product[] = [];
+    ngOnInit(): void {
+        let url = new URL(window.location.href);
+        let id = url.searchParams.get("id");
+        if (id) {
+            this.getProduct(parseInt(id));
+        }
+    }
     isErrorSave: boolean = false;
     saveErrorMessage: string = "";
-    addItem(form: NgForm) {
-        if (form.value.price < 0) {
-            form.controls['price'].setErrors({ 'incorrect': true });
+    getProduct(id: number) {
+        this.productServ.getProduct(id).subscribe(data => this.product = data["product"]);
+    }
+    saveItem(prodID: NgModel, prodName: NgModel, prodPrice: NgModel, prodDescription: NgModel) {
+        this.isErrorSave = false;
+        if (prodPrice.value < 0) {
+            this.isErrorSave = true;
+            this.saveErrorMessage = "Цена должна быть больше 0";
             return;
         }
-        let prod = new Product(0, form.value.name, form.value.description, form.value.price);
+        let prod = new Product(prodID.value, prodName.value, prodDescription.value, prodPrice.value);
+        console.log(prod);
         this.productServ.updateCreateProduct(prod).subscribe(data => this.checkAdd(data));
     }
     checkAdd(data: any) {

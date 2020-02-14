@@ -13,17 +13,32 @@ import { ProductService } from './data.productService';
 var NewProductComponent = /** @class */ (function () {
     function NewProductComponent(productServ) {
         this.productServ = productServ;
-        this.items = [];
+        this.productID = 0;
         this.isErrorSave = false;
         this.saveErrorMessage = "";
     }
-    NewProductComponent.prototype.addItem = function (form) {
+    NewProductComponent.prototype.ngOnInit = function () {
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        if (id) {
+            this.productID = parseInt(id);
+            this.getProduct(this.productID);
+        }
+    };
+    NewProductComponent.prototype.getProduct = function (id) {
+        var _this = this;
+        this.productServ.getProduct(id).subscribe(function (data) { return _this.fillNgForm(data); });
+    };
+    NewProductComponent.prototype.fillNgForm = function (data) {
+        console.log(data);
+    };
+    NewProductComponent.prototype.saveItem = function (form) {
         var _this = this;
         if (form.value.price < 0) {
             form.controls['price'].setErrors({ 'incorrect': true });
             return;
         }
-        var prod = new Product(0, form.value.name, form.value.description, form.value.price);
+        var prod = new Product(this.productID, form.value.name, form.value.description, form.value.price);
         this.productServ.updateCreateProduct(prod).subscribe(function (data) { return _this.checkAdd(data); });
     };
     NewProductComponent.prototype.checkAdd = function (data) {

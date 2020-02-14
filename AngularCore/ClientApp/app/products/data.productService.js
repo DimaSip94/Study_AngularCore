@@ -23,6 +23,9 @@ var ProductService = /** @class */ (function () {
             });
         }));
     };
+    ProductService.prototype.getProduct = function (id) {
+        return this.http.get(this.url + '/' + id);
+    };
     ProductService.prototype.updateCreateProduct = function (product) {
         return this.http.post(this.url, product);
     };
